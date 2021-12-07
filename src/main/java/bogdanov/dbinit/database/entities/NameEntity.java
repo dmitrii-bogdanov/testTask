@@ -3,6 +3,7 @@ package bogdanov.dbinit.database.entities;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.context.annotation.PropertySource;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -10,7 +11,7 @@ import java.time.LocalDateTime;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "names")
+@PropertySource("classpath:table.properties")
 public class NameEntity {
 
     @Id
