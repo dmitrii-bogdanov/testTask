@@ -21,13 +21,13 @@ public class NameServiceImpl implements NameService {
     private final String NAME_PREFIX = "NAME_";
 
     @Override
-    public boolean generateAndSave(int numberOfRecords, int bufferSize) {
+    public boolean generateAndSave(int numberOfRecords, int batchSize) {
         int i = 0;
         int offset = 0;
-        for (; i < (numberOfRecords / bufferSize); i++, offset += bufferSize) {
-            saveAll(generate(bufferSize, (1 + offset)));
+        for (; i < (numberOfRecords / batchSize); i++, offset += batchSize) {
+            saveAll(generate(batchSize, (1 + offset)));
         }
-        if (numberOfRecords > i * bufferSize) {
+        if (numberOfRecords > i * batchSize) {
             saveAll(generate(numberOfRecords - offset, (1 + offset)));
         }
 
